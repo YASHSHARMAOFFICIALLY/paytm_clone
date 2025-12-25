@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 
-const MONGO_URL =
-  "mongodb+srv://yashsharma:%23Yash0816@cluster0.amgmr3o.mongodb.net/testdb?retryWrites=true&w=majority";
+
+if (!process.env.MONGO_URL) {
+  throw new Error("MONGO_URL is not defined in environment variables");
+}
 async function connectDB() {
   try {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(process.env.MONGO_URL);
     console.log("✅ MongoDB connected successfully");
   } catch (error) {
     console.error("❌ MongoDB connection failed:", error.message);
