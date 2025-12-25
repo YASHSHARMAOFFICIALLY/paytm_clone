@@ -7,12 +7,19 @@ export const Users = () => {
     const [users, setUsers] = useState([])
     const[filter,setfilter]=useState("")
     useEffect(()=>{
-         axios.get("http://localhost:3000/api/v1/user/bulk?filter="+filter)
-        .then(response=>{
+        const timeoutID = setTimeout(()=>{
+            console.log("Sending request for filter:", filter);
+             axios.get("http://localhost:3000/api/v1/user/bulk?filter="+filter)
+             .then(response=>{
             console.log("Users from backend:", response.data.user);
             setUsers(response.data.user)
         })
-        .catch(err => console.error("API Error:", err));
+         .catch(err => console.error("API Error:", err));
+        
+        },500)
+        return () => {
+            clearTimeout(timeoutID);
+        };
     },[filter])
 
     return <>
