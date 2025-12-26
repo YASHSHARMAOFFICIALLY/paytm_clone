@@ -6,14 +6,12 @@ import { Inputbox } from "../component/Input"
 import { useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
-
-
-
 export const Signup = () =>{
     const[firstname,setFirstname]= useState("")
     const[lastname,setlastname]=useState("")
     const[username,setusername]=useState("")
     const[password,setpassword]=useState("")
+    const [message, setMessage] = useState("")
     const navigate = useNavigate()
     return (
         <div className="bg-slate-300 h-screen flex justify-center">
@@ -43,14 +41,23 @@ export const Signup = () =>{
                  password
             });
             localStorage.setItem("token",response.data.token)
-            navigate("/dashboard")
-            alert("signup successful");
+            setMessage("signup successful");
+            setTimeout(() => navigate("/dashboard"), 1000);
             }catch(err){
                 console.log(err)
-                alert("signup failed")
+                setMessage("signup failed")
             }
           }}label={"Sign up"} />
         </div>
+        {message && (
+                <div className={`text-sm font-semibold p-2 rounded mt-4 text-center ${
+                    message.includes("successful") 
+                    ? "bg-green-100 text-green-700" 
+                    : "bg-red-100 text-red-700"
+                }`}>
+                    {message}
+                </div>
+            )}
         <Bottomwarning label={"Already have an account?"} buttonText={"Sign in"} to={"/signin"} />
       </div>
             </div>

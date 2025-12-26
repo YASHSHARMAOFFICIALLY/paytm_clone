@@ -39,7 +39,7 @@ export const SendMoney = () => {
                                 />
                             </div>
                             
-                            {/* Display Message */}
+                            
                             {message && (
                                 <div className={`text-sm font-semibold p-2 rounded ${message.includes("Success") ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
                                     {message}
