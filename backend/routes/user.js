@@ -7,7 +7,8 @@ const { User, Account } = require("../db");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config");
 const { authMiddleware} = require("../middleware")
-
+const bycrpt = require('bcrypt')
+const SALT_ROUNDS = 10;
 
 const signupBody = zod.object({
     username:zod.string().email(),
@@ -36,9 +37,12 @@ router.post("/signup",async(req,res)=>{
         })
     }
 
+    const hashedpassword = await bycrpt.hash(req.body.password,SALT_ROUNDS)
+
+
     const user = await User.create({
         username : req.body.username,
-        password : req.body.password,
+        password : hashedpassword,
         firstname :req.body.firstname,
         lastname:req.body.lastname,
     })
@@ -57,6 +61,7 @@ router.post("/signup",async(req,res)=>{
         token:token
     })
 })
+
 
 
 

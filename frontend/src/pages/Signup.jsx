@@ -30,7 +30,9 @@ export const Signup = () =>{
         }} placeholder="enter your gmail" label={"Email"} />
         <Inputbox onChange ={(e)=>{
             setpassword(e.target.value)
-        }} placeholder="enter any password " label={"Password"} />
+        }} placeholder="enter any password " 
+        type="password"
+        label={"Password"} />
         <div className="pt-4">
           <Button  onClick = {async()=>{
             try{

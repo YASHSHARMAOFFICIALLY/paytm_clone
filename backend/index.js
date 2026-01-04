@@ -3,6 +3,7 @@ console.log("ENV CHECK:", process.env.MONGO_URL);
 
 const express = require("express");
 const mainRouter = require('./routes/index')
+
 var cors = require('cors')
 const app = express()
 
