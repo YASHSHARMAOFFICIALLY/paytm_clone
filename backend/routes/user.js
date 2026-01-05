@@ -3,10 +3,10 @@ const app = express();
 app.use(express.json());
 const router = express.Router();
 const zod = require("zod");
-const { User, Account } = require("../db");
+const { User, Account } = require("../api/db");
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../config");
-const { authMiddleware} = require("../authmiddleware")
+const { JWT_SECRET } = require("../api/config");
+const { authMiddleware} = require("../api/authmiddleware")
 const bycrpt = require('bcrypt')
 const SALT_ROUNDS = 10;
 
