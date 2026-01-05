@@ -6,7 +6,7 @@ const zod = require("zod");
 const { User, Account } = require("../db");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config");
-const { authMiddleware} = require("../middleware")
+const { authMiddleware} = require("../authmiddleware")
 const bycrpt = require('bcrypt')
 const SALT_ROUNDS = 10;
 
