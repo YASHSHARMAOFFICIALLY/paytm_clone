@@ -3,7 +3,7 @@
 
 A functional digital wallet application where users can securely sign up, manage a virtual wallet, and transfer funds to other users in real-time.
 
-Live Demo: paytm-clone-ten-bice.vercel.app
+Live Demo: <paytm-clone-ten-bice.vercel.app>
 
 
 ## 🚀 Features
@@ -18,7 +18,7 @@ Live Demo: paytm-clone-ten-bice.vercel.app
 
 •Dynamic Balancing: Currently, new accounts are initialized with a random balance (using Math.random()) to simulate an existing account state.
 
-##🛠️ Tech Stack
+## 🛠️Tech Stack
 
 •Frontend: React.js, Tailwind CSS (for styling), Axios (for API calls).
 
