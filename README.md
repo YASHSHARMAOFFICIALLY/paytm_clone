@@ -3,7 +3,7 @@
 
 A functional digital wallet application where users can securely sign up, manage a virtual wallet, and transfer funds to other users in real-time.
 
-Live Demo: <paytm-clone-ten-bice.vercel.app>
+**Live Demo:** [paytm-clone-ten-bice.vercel.app](https://paytm-clone-ten-bice.vercel.app)
 
 
 ## 🚀 Features
