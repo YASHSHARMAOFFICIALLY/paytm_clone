@@ -1,18 +1,30 @@
 require("dotenv").config();
-console.log("ENV CHECK:", process.env.MONGO_URL);
-
 const express = require("express");
-const mainRouter = require('../routes/index')
+const cors = require('cors');
+const mainRouter = require('../routes/index');
 
+const app = express(); // 1. Define app FIRST
 
-var cors = require('cors')
-const app = express()
-
+// 2. Middleware
 app.use(cors());
 app.use(express.json());
-app.use("/api/v1",mainRouter)
+
+// 3. Debug/Health Check Routes
+app.get("/debug", (req, res) => {
+  res.json({ 
+    status: "Server is running", 
+    directory: __dirname,
+    time: new Date().toISOString(),
+    env_loaded: !!process.env.MONGO_URL // Checks if DB URL is found
+  });
+});
+
 app.get("/", (req, res) => {
   res.send("Server is alive");
 });
-module.exports = app;
 
+// 4. Main Router
+app.use("/api/v1", mainRouter);
+
+// 5. Export for Vercel
+module.exports = app;
