@@ -36,6 +36,10 @@ export const Signup = () =>{
         <div className="pt-4">
           <Button  onClick = {async()=>{
             try{
+                if (!username || !firstname || !lastname || !password) {
+                setMessage("All fields are required");
+                return;
+        }
             const response = await axios.post("https://paytm-clone-nu.vercel.app/api/v1/user/signup",{
                  username,
                  firstname,
@@ -47,7 +51,10 @@ export const Signup = () =>{
             setTimeout(() => navigate("/dashboard"), 1000);
             }catch(err){
                 console.log(err)
-                setMessage("signup failed")
+                const errorMsg = err.response?.data?.message || "signup failed";
+                 console.error("Signup Error:", err.response?.data);
+                setMessage(errorMsg);
+                
             }
           }}label={"Sign up"} />
         </div>
