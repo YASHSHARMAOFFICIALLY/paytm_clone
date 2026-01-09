@@ -9,7 +9,7 @@ export const Users = () => {
     useEffect(()=>{
         const timeoutID = setTimeout(()=>{
             console.log("Sending request for filter:", filter);
-             axios.get("http://localhost:3000/api/v1/user/bulk?filter="+filter)
+             axios.get("https://paytm-clone-nu.vercel.app/api/v1/user/bulk?filter="+filter)
              .then(response=>{
             console.log("Users from backend:", response.data.user);
             setUsers(response.data.user)

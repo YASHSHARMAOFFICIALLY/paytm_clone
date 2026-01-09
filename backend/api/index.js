@@ -26,5 +26,10 @@ app.get("/", (req, res) => {
 // 4. Main Router
 app.use("/api/v1", mainRouter);
 
+// 5. Catch-all for 404s (Add this)
+app.use((req, res) => {
+  res.status(404).json({ error: "Route not found on Vercel" });
+});
+
 // 5. Export for Vercel
 module.exports = app;
